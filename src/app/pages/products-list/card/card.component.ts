@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import {productsMock} from '../../../shared/products/products.mock';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -10,11 +10,6 @@ import {productsMock} from '../../../shared/products/products.mock';
     styleUrl: './card.component.css',
 })
 export class CardComponent {
-    img = productsMock[0].images[0].url;
-    name = productsMock[0].name;
-    price = `${productsMock[0].price} $`;
-
-    buy($event: MouseEvent) {
-        $event.stopPropagation();
-    }
+    readonly cards = input.required<Product>();
+    readonly buy = output<Event>();
 }

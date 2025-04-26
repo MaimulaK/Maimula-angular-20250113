@@ -4,14 +4,14 @@
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image alt="Photo" [src]="img" />
+    <img mat-card-image alt="Photo" [src]="cards().images[0].url" />
     <mat-card-content>
         <p>
-            {{ name }}
+            {{ cards().name }}
         </p>
-        <p>Price: {{ price }}</p>
+        <p>Price: {{ cards().price }}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button (click)="buy($event)">Buy</button>
+        <button mat-button (click)="buy.emit($event)">Buy</button>
     </mat-card-actions>
 </mat-card>

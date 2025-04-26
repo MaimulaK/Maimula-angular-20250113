@@ -1,1 +1,5 @@
-<app-card></app-card>
+<div class="card_contener">
+    @for (card of productsArr; track $index) {
+        <app-card [cards]="card" (buy)="buyProduct(card._id)"></app-card>
+    }
+</div>

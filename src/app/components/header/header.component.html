@@ -1,5 +1,10 @@
 <mat-toolbar>
-    <button mat-icon-button aria-label="Example icon-button with menu icon" class="example-icon">
+    <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        class="example-icon"
+        (click)="menuClick.emit()"
+    >
         <mat-icon>menu</mat-icon>
     </button>
     <img alt="Logo" class="logo" [src]="imageSrc" />

@@ -1,2 +1,6 @@
-<app-header></app-header>
+<app-header (menuClick)="toggleSideNavMenu()"></app-header>
+<app-sidenav
+    [isSideNavOpen]="isSideNavOpenStore()"
+    (sideNavChange)="this.isSideNavOpenStore.set($event)"
+></app-sidenav>
 <app-products-list></app-products-list>
