@@ -1,5 +1,5 @@
-import {Component, input, output} from '@angular/core';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {Component, viewChild} from '@angular/core';
+import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
     selector: 'app-sidenav',
@@ -9,11 +9,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     styleUrl: './sidenav.component.css',
 })
 export class SidenavComponent {
-    isSideNavOpen = input(false);
+    // isSideNavOpen = input(false);
+    // sideNavChange = output<boolean>();
 
-    sideNavChange = output<boolean>();
+    private readonly matDrawer = viewChild<MatDrawer>('drawer');
 
     toggleSideNavButton() {
-        this.sideNavChange.emit(!this.isSideNavOpen());
+        // this.sideNavChange.emit(!this.isSideNavOpen());
+        this.matDrawer()?.toggle();
     }
 }
