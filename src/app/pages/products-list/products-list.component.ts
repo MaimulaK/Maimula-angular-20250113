@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, effect, input, TemplateRef, ViewContainerRef, viewChild} from '@angular/core';
 import {CardComponent} from './card/card.component';
 import {productsMock} from '../../shared/products/products.mock';
 
@@ -11,6 +11,18 @@ import {productsMock} from '../../shared/products/products.mock';
 })
 export class ProductsListComponent {
     readonly productsArr = productsMock;
+    readonly popupHostContainer = input<TemplateRef<unknown>>();
+
+    readonly popupContainer = viewChild('popupContainer', {read: ViewContainerRef});
+    constructor() {
+        effect(() => {
+            const popupHostContainerTemplate = this.popupHostContainer();
+
+            if (popupHostContainerTemplate) {
+                this.popupContainer()?.createEmbeddedView(popupHostContainerTemplate);
+            }
+        });
+    }
 
     buyProduct(cardId: string) {
         // eslint-disable-next-line no-console

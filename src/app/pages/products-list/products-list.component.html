@@ -2,4 +2,7 @@
     @for (card of productsArr; track $index) {
         <app-card [cards]="card" (buy)="buyProduct(card._id)"></app-card>
     }
+    <div>
+        <ng-container #popupContainer></ng-container>
+    </div>
 </div>

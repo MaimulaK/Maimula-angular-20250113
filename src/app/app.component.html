@@ -3,5 +3,42 @@
     [isSideNavOpen]="isSideNavOpenStore()"
     (sideNavChange)="this.isSideNavOpenStore.set($event)"
 ></app-sidenav> -->
-<app-sidenav #sideNav></app-sidenav>
-<app-products-list></app-products-list>
+<app-sidenav
+    #sideNav
+    [sideNavContentTemplate]="sideNavContent"
+    [productContentTemplate]="productContent"
+></app-sidenav>
+
+<ng-template #sideNavContent>
+    <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+</ng-template>
+
+<ng-template #productContent>
+    <app-products-list [popupHostContainer]="popupHostContainer"></app-products-list>
+</ng-template>
+<ng-template #popupHostContainer>
+    <app-popup-host
+        #popUp
+        [firstPop]="firstPopupTemplate"
+        [secondPop]="SecondPopupTemplate"
+    ></app-popup-host>
+</ng-template>
+<!-- <app-popup-host [firstPop]="firstPopupTemplate" [secondPop]="SecondPopupTemplate"></app-popup-host> -->
+
+<ng-template #firstPopupTemplate>
+    <div>
+        <h2>First</h2>
+        <p>First PopUp</p>
+    </div>
+</ng-template>
+
+<ng-template #SecondPopupTemplate>
+    <div>
+        <h2>Second</h2>
+        <p>Second PopUp</p>
+    </div>
+</ng-template>
